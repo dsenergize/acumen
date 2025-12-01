@@ -16,11 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="font-sans bg-gray-50 antialiased">
         <div className="min-h-screen flex flex-col">
-          <Header />
+          {/* <Header /> */}
           <main className="flex-grow">
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </body>
     </html>
