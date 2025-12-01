@@ -76,13 +76,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>Web Development</li>
               <li>UI/UX Design</li>
-              <li>Marketing PR</li>
+              <li>Marketing&PR</li>
               <li>App Development</li>
               <li>Video Production</li>
-              <li>Advanced SEO</li>
-              {/* <li>Email Marketing</li>
-              <li>Social Media</li> */}
-              {/* <li>24/7 Sales & Support</li> */}
+              {/* <li>Advanced SEO</li>
+              <li>Email Marketing</li>
+              <li>Social Media</li>
+              <li>24/7 Sales & Support</li> */}
             </ul>
           </div>
 

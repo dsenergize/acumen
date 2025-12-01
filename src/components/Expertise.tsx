@@ -103,7 +103,7 @@ const ExpertiseCard: React.FC<ExpertiseCardProps> = ({ title, description, image
 // Main Expertise Section Component
 const Expertise: React.FC = () => {
     return (
-        <section className="w-full py-20 bg-cream">
+        <section className="w-full py-16 bg-cream">
             <div className="mx-auto max-w-7xl px-6">
                 <h2 className="text-4xl font-extrabold text-navy mb-4">
                     OUR EXPERTISE

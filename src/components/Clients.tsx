@@ -130,8 +130,8 @@ export default function CaseStudies() {
 
                 {/* Section Header - Sticky header for persistent context */}
                 <header className="text-center pt-8 pb-4 sticky top-0 bg-cream z-20 ">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-navy/60 flex items-center justify-center">
-                        <Zap className="w-4 h-4 mr-2" /> Our Clients & Successes
+                    <span className="text-sm font-semibold uppercase tracking-widest text-navy/70 flex items-center justify-center">
+                         Our Clients & Successes
                     </span>
                     <h2 className="mt-1 text-3xl md:text-4xl font-extrabold text-navy">
                         Client Stories: Scroll to Explore
