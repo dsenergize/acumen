@@ -3,5 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-cream text-navy font-sans;
+  @apply bg-acumen-light text-acumen-purple font-sans;
 }
+

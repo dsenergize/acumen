@@ -8,9 +8,9 @@ interface CaseStudy {
     id: number;
     title: string;
     description: string;
-    imagePlaceholder: string; // Placeholder text/identifier for the image area
-    isImageLeft: boolean; // Determines the layout order (now ignored for grid)
-    projectFocus: string; // Key focus of the project
+    imagePlaceholder: string;
+    isImageLeft: boolean;
+    projectFocus: string;
 }
 
 // Mock Data for Case Studies
@@ -39,77 +39,65 @@ const CASE_STUDIES: CaseStudy[] = [
         isImageLeft: true,
         projectFocus: "Sustainable Brand Launch",
     },
-    // {
-    //     id: 4,
-    //     title: "Start Your Success Story",
-    //     description: "Ready to launch your own impactful project? This final card encourages you to take the next step and contact us directly to begin your collaboration and achieve measurable results.",
-    //     imagePlaceholder: "Start-Your-Project",
-    //     isImageLeft: false,
-    //     projectFocus: "Your Next Big Project",
-    // },
 ];
 
 // Helper function to generate a placeholder image URL
 const getPlaceholderUrl = (text: string) => {
-    // Using a vertical ratio for the featured layout
     const safeText = text.replace(/[^a-zA-Z0-9]/g, '-').substring(0, 20);
-    return `https://placehold.co/800x1200/39476b/f3f2e8?text=${safeText}`;
-}
+    return `https://placehold.co/800x1200/783f8e/c8c6d7?text=${safeText}`;
+};
 
 /**
  * Renders a single case study card with a specific vertical height for scroll snapping.
  */
 const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => {
-    
     return (
-        <article 
-            key={study.id} 
-            // h-[80vh] is the snap height.
-            // FIX: Added mb-8 (margin-bottom: 2rem) to create visual spacing between cards.
-            className="snap-start h-[80vh] w-full flex items-start justify-center px-4 md:px-8 bg-cream mb-8"
+        <article
+            key={study.id}
+            className="snap-start h-[80vh] w-full flex items-start justify-center px-4 md:px-8 bg-acumen-light-900 mb-8"
         >
-            {/* Centered Content Container. Uses h-full to match the snap height. */}
             <div className="max-w-6xl w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
-                
-                {/* 1. Image/Visual Section. Uses h-full to match the content column height. */}
-                <div className="w-full h-full min-h-[40vh] hidden md:flex items-center justify-center text-white text-lg font-semibold overflow-hidden relative group">
-                    <img 
-                        src={getPlaceholderUrl(study.imagePlaceholder)} 
+
+                {/* IMAGE SECTION */}
+                <div className="w-full h-full min-h-[40vh] hidden md:flex items-center justify-center overflow-hidden relative group bg-acumen-purple-800/80">
+                    <img
+                        src={getPlaceholderUrl(study.imagePlaceholder)}
                         alt={`${study.title} Case Study Visual`}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         onError={(e) => {
                             const target = e.target as HTMLImageElement;
                             target.onerror = null;
-                            target.src = "https://placehold.co/800x1200/39476b/f3f2e8?text=Visual+Error"; 
+                            target.src = "https://placehold.co/800x1200/783f8e/c8c6d7?text=Visual+Error";
                         }}
                     />
-                    <div className="absolute inset-0 bg-navy/30 mix-blend-multiply"></div>
+                    <div className="absolute inset-0 bg-acumen-purple-800/80 mix-blend-multiply"></div>
                 </div>
 
-                {/* 2. Content Section. Uses h-full and flex-col justify-between to push the button down. */}
-                <div className="flex flex-col justify-between h-full p-4 md:p-8"> 
-                    <div> {/* Wrapper for top content (Focus, Title, Description) */}
-                        <span className="text-sm font-semibold uppercase tracking-wider text-navy/60 mb-2">
+
+                {/* CONTENT SECTION */}
+                <div className="flex flex-col justify-between h-full p-4 md:p-8">
+                    <div>
+                        <span className="text-sm font-semibold uppercase tracking-wider text-acumen-purple/60 mb-2">
                             <Briefcase className="w-4 h-4 mr-2 inline-block" /> {study.projectFocus}
                         </span>
-                        <h3 className="text-3xl font-extrabold text-navy mb-4 pb-2">
+
+                        <h3 className="text-3xl font-extrabold text-acumen-purple mb-4 pb-2">
                             {study.title}
                         </h3>
-                        
-                        <p className="text-base text-navy/70 leading-relaxed mb-0">
+
+                        <p className="text-base text-acumen-purple/70 leading-relaxed">
                             {study.description}
                         </p>
                     </div>
 
-                    {/* Button - Pushed to the bottom by justify-between. No mt-4. */}
                     <a
                         href={study.id === 4 ? "/contact" : `/case-studies/${study.id}`}
                         className="inline-flex items-center justify-center w-full md:w-auto px-6 py-3 rounded-xl font-medium cursor-pointer
-                        border-2 border-navy
-                        bg-cream text-navy
+                        border-2 border-acumen-purple-50
+                        bg-acumen-purple-700 text-acumen-purple-50
                         transition-all duration-300
-                        hover:bg-navy hover:text-cream
-                        hover:scale-[1.02] shadow-md self-start" 
+                        hover:bg-acumen-purple-50 hover:text-acumen-purple-700
+                        hover:scale-[1.02] shadow-md self-start"
                     >
                         {study.id === 4 ? "Start Your Project" : <>Read Full Case Study <ArrowRight className="w-4 h-4 ml-2" /></>}
                     </a>
@@ -121,42 +109,37 @@ const CaseStudyCard: React.FC<{ study: CaseStudy }> = ({ study }) => {
 
 
 /**
- * Main component to display all case studies using the vertical scroll-snap layout.
+ * Main case study vertical scroll snap container.
  */
 export default function CaseStudies() {
     return (
-        <section className="w-full bg-cream">
+        <section className="w-full bg-acumen-light-900">
             <div className="mx-auto max-w-7xl px-0">
 
-                {/* Section Header - Sticky header for persistent context */}
-                <header className="text-center pt-8 pb-4 sticky top-0 bg-cream z-20 ">
-                    <span className="text-sm font-semibold uppercase tracking-widest text-navy/70 flex items-center justify-center">
-                         Our Clients & Successes
+                {/* HEADER */}
+                <header className="text-center pt-8 pb-4 sticky top-0 bg-acumen-light-900 z-20">
+                    <span className="text-sm font-semibold uppercase tracking-widest text-acumen-purple/70 flex items-center justify-center">
+                        Our Clients & Successes
                     </span>
-                    <h2 className="mt-1 text-3xl md:text-4xl font-extrabold text-navy">
+                    <h2 className="mt-1 text-3xl md:text-4xl font-extrabold text-acumen-purple">
                         Client Stories: Scroll to Explore
                     </h2>
                 </header>
 
-                {/* Case Study List Container with Scroll Snap. 
-                    h-[80vh] is the scrollable height.
-                */}
+                {/* SCROLLABLE LIST */}
                 <div className="overflow-y-scroll h-[80vh] snap-y snap-mandatory custom-scrollbar scroll-pt-[140px] md:scroll-pt-[140px]">
                     {CASE_STUDIES.map(study => (
                         <CaseStudyCard key={study.id} study={study} />
                     ))}
                 </div>
 
-                {/* Custom Scrollbar Styling (Hidden for a cleaner experience) */}
-                <style dangerouslySetInnerHTML={{ __html: `
-                    .custom-scrollbar {
-                        scrollbar-width: none; /* For Firefox */
-                    }
-                    .custom-scrollbar::-webkit-scrollbar {
-                        display: none; /* For Chrome, Safari, and Opera */
-                    }
+                {/* HIDE SCROLLBAR */}
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    .custom-scrollbar { scrollbar-width: none; }
+                    .custom-scrollbar::-webkit-scrollbar { display: none; }
                 `}} />
-                
+
             </div>
         </section>
     );
