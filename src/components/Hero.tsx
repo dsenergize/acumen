@@ -71,7 +71,6 @@
 //         </section>
 //     );
 // }
-
 "use client";
 
 import { ArrowRight, Sparkles, ChevronDown } from "lucide-react";
@@ -83,32 +82,32 @@ export const Hero = () => {
       id="home"
       className="relative min-h-[100dvh] flex items-center pt-28 pb-20"
     >
-      {/* Abstract Background */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-[hsl(277,72%,26%)]/20 to-blue-600/20 rounded-full blur-3xl" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-blue-600/20 to-[hsl(277,72%,26%)]/20 rounded-full blur-3xl" />
+      {/* Abstract Background - Using primary brand colors for subtle gradient blur */}
+      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-acumen-primary/20 to-palette-blue-slate/30 rounded-full blur-3xl" />
+      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-gradient-to-tr from-palette-blue-slate/30 to-acumen-primary/20 rounded-full blur-3xl" />
       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/nc')] opacity-5" />
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
 
           {/* Badge */}
-          <div className="animate-fade-in opacity-0 [animation-delay:200ms] inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-slate-200/50">
-            <Sparkles className="w-3.5 h-3.5 text-[hsl(277,72%,26%)]" />
-            <span className="text-xs font-semibold tracking-wide text-slate-600 uppercase">
+          <div className="animate-fade-in opacity-0 [animation-delay:200ms] inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-acumen-primary/30">
+            <Sparkles className="w-3.5 h-3.5 text-acumen-primary" />
+            <span className="text-xs font-semibold tracking-wide text-acumen-secondary uppercase">
               Strategic Digital Partner
             </span>
           </div>
 
           {/* Headline */}
-          <h1 className="animate-fade-in opacity-0 [animation-delay:400ms] font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-[#4f1271] mt-6 mb-4">
+          <h1 className="animate-fade-in opacity-0 [animation-delay:400ms] font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight text-acumen-secondary mt-6 mb-4">
             Build Brands That <br className="hidden md:block" />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[hsl(277,72%,26%)] to-[#bfacc8]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-acumen-primary to-palette-lavender-muted">
               Inspire & Convert
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="animate-fade-in opacity-0 [animation-delay:600ms] text-lg md:text-xl text-slate-600 max-w-2xl mb-10">
+          <p className="animate-fade-in opacity-0 [animation-delay:600ms] text-lg md:text-xl text-acumen-light max-w-2xl mb-10">
             We fuse data-driven strategy with world-class design to build
             digital experiences that perform.
           </p>
@@ -141,16 +140,16 @@ export const Hero = () => {
           </div>
 
           {/* Social Proof */}
-          <div className="animate-fade-in opacity-0 [animation-delay:1000ms] mt-20 pt-8 border-t border-slate-100 w-full">
-            <p className="text-sm font-medium text-slate-400 mb-6 uppercase tracking-wide">
+          <div className="animate-fade-in opacity-0 [animation-delay:1000ms] mt-20 pt-8 border-t border-acumen-primary/20 w-full">
+            <p className="text-sm font-medium text-acumen-light mb-6 uppercase tracking-wide">
               Trusted by visionary brands
             </p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale">
-              {["Acme Corp", "GlobalTech", "Nebula", "Velocity", "FoxRun"].map(
+              {["Acme Corp", "GlobalTech", "Nebula", "Velocity", "FoxRun", "DSenergize"].map(
                 (logo) => (
                   <span
                     key={logo}
-                    className="text-lg font-serif font-bold text-slate-800"
+                    className="text-lg font-serif font-bold text-acumen-secondary"
                   >
                     {logo}
                   </span>
@@ -170,10 +169,8 @@ export const Hero = () => {
             ?.scrollIntoView({ behavior: "smooth" })
         }
       >
-        <ChevronDown className="w-8 h-8 text-slate-400" />
+        <ChevronDown className="w-8 h-8 text-acumen-light" />
       </div>
     </section>
   );
 };
-
-export default Hero;

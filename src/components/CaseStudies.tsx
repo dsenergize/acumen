@@ -159,21 +159,22 @@ export const CaseStudies = () => {
             client: "Gopi Vaid",
             title: "Redefining Luxury E-commerce",
             tags: ["UX/UI", "Development"],
-            image: "bg-gradient-to-br from-amber-200 to-orange-100",
+            // Note: Keeping color gradient classes as they are not slate/brand related
+            image: "bg-acumen-primary/5",
             stat: "+45% Conversion",
         },
         {
             client: "Astha Narang",
             title: "Global SEO Dominance",
             tags: ["Strategy", "SEO"],
-            image: "bg-gradient-to-bl from-indigo-200 to-blue-100",
+            image: "bg-acumen-primary/5",
             stat: "2x Traffic",
         },
         {
             client: "Pomecha",
             title: "Sustainable Brand Launch",
             tags: ["Branding", "Launch"],
-            image: "bg-gradient-to-tr from-emerald-100 to-teal-200",
+            image: "bg-acumen-primary/5",
             stat: "Record Q1 Sales",
         },
     ];
@@ -183,14 +184,18 @@ export const CaseStudies = () => {
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-end mb-16">
                     <div>
-                        <span className="text-sm font-bold text-[hsl(277,72%,26%)] uppercase tracking-widest">
+                        <span className="text-sm font-bold text-acumen-primary uppercase tracking-widest">
                             Our Work
                         </span>
-                        <h2 className="font-serif text-4xl md:text-5xl font-bold text-slate-900">
+                        {/* H2 text uses the darkest brand shade (acumen-secondary) */}
+                        <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-secondary">
                             Recent Case Studies
                         </h2>
                     </div>
-                    <Button variant="outline" className="hidden md:flex">
+                    <Button
+                        variant="secondary"
+                        className="hidden md:flex border-acumen-primary hover:border-acumen-primary"
+                    >
                         View All Work
                     </Button>
                 </div>
@@ -204,13 +209,15 @@ export const CaseStudies = () => {
                                     item.image
                                 )}
                             >
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                                <div className="absolute inset-0 bg-acumen-primary/10 transition-colors duration-300" />
                                 <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <span className="bg-white/90 backdrop-blur text-slate-900 px-4 py-2 rounded-full text-sm font-semibold">
+                                    {/* Stat text uses acumen-secondary for dark contrast */}
+                                    <span className="bg-white/90 backdrop-blur text-acumen-secondary px-4 py-2 rounded-full text-sm font-semibold">
                                         {item.stat}
                                     </span>
+                                    {/* Icon container uses dark text for contrast */}
                                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                                        <ArrowRight className="w-5 h-5 text-slate-900" />
+                                        <ArrowRight className="w-5 h-5 text-acumen-secondary" />
                                     </div>
                                 </div>
                             </div>
@@ -220,17 +227,20 @@ export const CaseStudies = () => {
                                     {item.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="text-xs font-semibold text-slate-500 uppercase tracking-wider"
+                                            // Tags use the lighter brand shade (acumen-light)
+                                            className="text-xs font-semibold text-acumen-light uppercase tracking-wider"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
 
-                                <h3 className="font-serif text-2xl font-bold text-slate-900 group-hover:text-[hsl(277,72%,26%)] transition-colors">
+                                {/* Title text uses the darkest brand shade (acumen-secondary) */}
+                                <h3 className="font-serif text-2xl font-bold text-acumen-secondary group-hover:text-acumen-primary transition-colors">
                                     {item.title}
                                 </h3>
-                                <p className="text-slate-500">{item.client}</p>
+                                {/* Client name uses the lighter brand shade (acumen-light) */}
+                                <p className="text-acumen-light">{item.client}</p>
                             </div>
                         </div>
                     ))}

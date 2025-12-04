@@ -8,10 +8,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-// Define the primary theme color variable for readability
-const THEME_PRIMARY_COLOR = "[hsl(277,72%,26%)]";
-// Define a very light, custom background color for cards (replaces bg-slate-50)
-const CARD_LIGHT_BG = "[#FAFAFD]";
+// The constants are removed as we now use direct Tailwind classes (e.g., bg-acumen-primary).
 
 export const Services = () => {
   const services = [
@@ -54,20 +51,23 @@ export const Services = () => {
   ];
 
   return (
+    // Parent section background remains white
     <section id="services" className="py-24 md:py-32 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
-            {/* Using THEME_PRIMARY_COLOR for "Our Expertise" to match the theme */}
-            <span className={`text-md font-bold text-${THEME_PRIMARY_COLOR} uppercase tracking-widest`}>
+            {/* Using the custom acumen-primary color class */}
+            <span className="text-md font-bold text-acumen-primary uppercase tracking-widest">
               Our Expertise
             </span>
-            <h2 className={`font-serif text-4xl md:text-5xl font-bold text-${THEME_PRIMARY_COLOR}`}>
+            {/* Using acumen-primary for H2 as well for strong branding */}
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-primary">
               How We Deliver Growth
             </h2>
           </div>
 
-          <p className="text-slate-500 text-lg max-w-md pb-1">
+          {/* Standardizing neutral text color to the darkest brand shade (acumen-secondary) */}
+          <p className="text-acumen-secondary text-lg max-w-md pb-1">
             Comprehensive services tailored to drive growth and elevate your
             brand presence.
           </p>
@@ -77,22 +77,29 @@ export const Services = () => {
           {services.map((service, idx) => (
             <div
               key={idx}
-              // FIX: Replaced bg-slate-50 with custom light background color and adjusted hover/shadows
-              className={`group p-8 rounded-3xl bg-${CARD_LIGHT_BG} border-2 border-[#F4F4F9] hover:border-purple-200 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-${THEME_PRIMARY_COLOR}/10 hover:bg-white hover:scale-[1.01]`}
+              // Card background uses a very light tint of the brand color for subtle contrast
+              className="group p-8 rounded-3xl bg-acumen-primary/5 border-2 border-transparent hover:border-acumen-primary/30 transition-all duration-300 shadow-lg hover:shadow-2xl hover:shadow-acumen-primary/10 hover:scale-[1.01]"
             >
-              <div className={`w-14 h-14 rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-6 group-hover:bg-${THEME_PRIMARY_COLOR} transition-colors duration-300`}>
-                <service.icon className={`w-7 h-7 text-${THEME_PRIMARY_COLOR} group-hover:text-white transition-colors duration-300`} />
+              <div
+                // Icon background uses a subtle light shade (acumen-light/20) and switches to primary on hover
+                className="w-14 h-14 rounded-2xl bg-acumen-light/20 flex items-center justify-center mb-6 group-hover:bg-acumen-primary transition-colors duration-300"
+              >
+                {/* Icon color uses acumen-primary and switches to white on hover */}
+                <service.icon className="w-7 h-7 text-acumen-primary group-hover:text-white transition-colors duration-300" />
               </div>
 
-              <h3 className={`font-serif text-2xl font-semibold text-${THEME_PRIMARY_COLOR} mb-3`}>
+              {/* H3 text uses the dark brand shade (acumen-secondary) */}
+              <h3 className="font-serif text-2xl font-semibold text-acumen-secondary mb-3">
                 {service.title}
               </h3>
 
-              <p className="text-slate-500 leading-relaxed mb-6">
+              {/* Standardizing neutral text color for description (acumen-light) */}
+              <p className="text-acumen-light leading-relaxed mb-6">
                 {service.description}
               </p>
 
-              <div className={`flex items-center text-sm font-semibold text-${THEME_PRIMARY_COLOR} group-hover:text-slate-900 transition-colors`}>
+              {/* Link uses acumen-primary and switches to the dark brand shade on hover */}
+              <div className="flex items-center text-sm font-semibold text-acumen-primary group-hover:text-acumen-secondary transition-colors">
                 Learn more <ArrowRight className="w-4 h-4 ml-1" />
               </div>
             </div>
@@ -102,4 +109,3 @@ export const Services = () => {
     </section>
   );
 };
-export default Services;

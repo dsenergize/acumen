@@ -1,13 +1,12 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate"; // Ensure this is imported for the plugin
+import tailwindcssAnimate from "tailwindcss-animate"; 
 
 const config: Config = {
   content: [
-    // This assumes your project structure includes components in the root, app, and pages folders
+    // Ensuring 'src' is included for comprehensive file scanning
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    // If your components are exclusively in 'src/', you might need './src/**/*.{js,ts,jsx,tsx,mdx}'
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
@@ -17,16 +16,22 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // Defining colors to be available via classes like `bg-acumen-primary`
+        // --- EXISTING ACUMEN BRAND COLORS (PURPLES) ---
         acumen: {
-          primary: "hsl(277,72%,26%)", // Your custom purple color
-          secondary: "hsl(277,72%,22%)",
-          light: "hsl(277,72%,30%)",
+          primary: "hsl(277,72%,26%)", // Deep Purple
+          secondary: "hsl(277,72%,22%)", // Darker Purple (Hover)
+          light: "hsl(277,72%,30%)", // Slightly Lighter Purple
         },
-        // We assume the use of slate colors is standard Tailwind default.
+        // --- NEW ACCENT COLORS ADDED ---
+        palette: {
+          'maroon-dark': "#4F1721",
+          'lavender-muted': "#BFACC8",
+          'blue-slate': "#C8C6D7",
+        }
+        // Note: The slate colors used throughout your components (e.g., text-slate-900)
+        // are standard Tailwind colors and do not need to be redefined here.
       },
       fontFamily: {
-        // These rely on CSS variables defined in globals.css
         sans: ["var(--font-sans)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
       },
@@ -46,7 +51,6 @@ const config: Config = {
       },
     },
   },
-  // Ensure the tailwindcss-animate package is installed and correctly required
   plugins: [tailwindcssAnimate], 
 };
 
