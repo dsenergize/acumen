@@ -9,6 +9,7 @@ import { About } from "@/components/About";
 import { CTA } from "@/components/CTA"; // Standardized back to the original CTA file path
 import { Footer } from "@/components/Footer";
 
+
 export default function Home() {
   return (
     <>

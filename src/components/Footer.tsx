@@ -1,6 +1,7 @@
 "use client";
 
 import { Linkedin, Mail, ArrowRight, Facebook } from "lucide-react";
+import Link from "next/link";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,8 +39,7 @@ export const Footer = () => {
 
             {/* FIX: Text color updated to acumen-light (removed text-slate-500) */}
             <p className="text-acumen-light mb-8 max-w-xs leading-relaxed">
-              Where creative strategy and technical expertise converge to deliver
-              digital excellence.
+              Strategy That Moves. Creativity That Wins.”
             </p>
 
             {/* Social Icons */}
@@ -150,9 +150,20 @@ export const Footer = () => {
         {/* FIX: Divider and text colors updated (removed border-slate-100, text-slate-500) */}
         <div className="border-t border-acumen-primary/10 pt-8 flex flex-col md:flex-row justify-between text-sm text-acumen-light">
           <p>&copy; {currentYear} The Acumen Arc. All rights reserved.</p>
-          <p>Designed & Built in New Delhi.</p>
+          <div className="flex text-acumen-secondary gap-4 mt-4 md:mt-0">
+              <Link className="hover:text-acumen-light" href="/terms">
+                Terms of Service
+              </Link>
+              <Link className="hover:text-acumen-light" href="/privacy">
+                Privacy Policy
+              </Link>
+
+          </div>
+          {/* <p>Designed & Built in New Delhi.</p> */}
         </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;

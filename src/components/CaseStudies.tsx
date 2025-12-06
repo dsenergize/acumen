@@ -7,26 +7,25 @@ import { cn } from "@/lib/utils";
 export const CaseStudies = () => {
     const cases = [
         {
-            client: "Gopi Vaid",
-            title: "Redefining Luxury E-commerce",
-            tags: ["UX/UI", "Development"],
-            // Note: Keeping color gradient classes as they are not slate/brand related
+            client: "DSenergize",
+            title: "Sustainable Brand Launch",
+            tags: ["Branding","Launch"],
+            image: "/assets/pic1.jpg",
+            stat: "Record Q1 Sales",
+        },
+        {
+            client: "ReqX",
+            title: "Transforming Tech Talent Acquisition",
+            tags: ["UX/UI","Development"],
             image: "/assets/pic9.jpg",
             stat: "+45% Conversion",
         },
         {
-            client: "Astha Narang",
-            title: "Global SEO Dominance",
-            tags: ["Strategy", "SEO"],
+            client: "ShapeIQ",
+            title: "Optimizing Digital Footprint for Space",
+            tags: ["Strategy","SEO"],
             image: "/assets/pic7.jpg",
             stat: "2x Traffic",
-        },
-        {
-            client: "Pomecha",
-            title: "Sustainable Brand Launch",
-            tags: ["Branding", "Launch"],
-            image: "/assets/pic1.jpg",
-            stat: "Record Q1 Sales",
         },
     ];
 
@@ -38,12 +37,13 @@ export const CaseStudies = () => {
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-end mb-16">
                     <div>
-                        <span className="text-sm font-bold text-acumen-primary uppercase tracking-widest">
-                            Our Work
+                        <span className="text-lg font-bold text-acumen-primary uppercase tracking-widest">
+                            Our Work 
+                            <span className="font-serif"> & </span>
                         </span>
                         {/* H2 text uses the darkest brand shade (acumen-secondary) */}
                         <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-secondary">
-                            Our Clients
+                            Hall of Impact
                         </h2>
                     </div>
                     <Button

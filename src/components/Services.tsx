@@ -16,37 +16,37 @@ export const Services = () => {
       icon: Globe,
       title: "Web Development",
       description:
-        "Scalable, high-performance web platforms and e-commerce solutions.",
+        "Built Different. Built Brilliant.",
     },
     {
       icon: Palette,
       title: "UI/UX Design",
       description:
-        "Intuitive interfaces and seamless user experiences that drive engagement.",
+        "Looks Good. Feels Better.",
     },
     {
       icon: Megaphone,
       title: "Marketing Strategy",
       description:
-        "Data-backed campaigns and funnel optimization for measurable growth.",
+        "Hype Meets Strategy. Ads That Actually Perform.",
     },
     {
       icon: Video,
       title: "Video Production",
       description:
-        "Cinematic storytelling that captures attention and builds trust.",
+        "Made to Stop the Scroll.",
     },
     {
       icon: Smartphone,
       title: "Mobile Apps",
       description:
-        "Native and cross-platform app development for iOS and Android.",
+        "Tap. Swipe. Love.",
     },
     {
       icon: Search,
       title: "SEO & Analytics",
       description:
-        "Technical SEO and deep analytical insights for top organic ranking.",
+        "Found. Clicked. Loved.",
     },
   ];
 
@@ -57,12 +57,13 @@ export const Services = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
             {/* Using the custom acumen-primary color class */}
-            <span className="text-md font-bold text-acumen-primary uppercase tracking-widest">
+            <span className="text-lg font-bold  text-acumen-primary uppercase tracking-widest">
               Our Expertise
+              <span className="font-serif"> & </span>
             </span>
             {/* Using acumen-primary for H2 as well for strong branding */}
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-primary">
-              How We Deliver Growth
+              Signature Services
             </h2>
           </div>
 

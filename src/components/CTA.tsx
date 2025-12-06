@@ -14,7 +14,7 @@ export const CTA = () => (
 
         {/* FIX 3: Body text color updated to neutral shade */}
         <p className="text-xl text-acumen-light mb-12 max-w-2xl mx-auto">
-          Let's discuss your ambitious goals and craft a strategic plan tailored to you.
+         Big goals need bold moves. Let'  s build a plan that makes them happen.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

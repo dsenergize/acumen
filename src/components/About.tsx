@@ -6,7 +6,7 @@ export const About = () => (
     <div className="container mx-auto px-6">
       {/* Main container background: Retain light tint, add soft shadow for depth */}
       <div className="bg-gradient-to-br from-acumen-primary/20 to-palette-blue-slate/30 rounded-[3rem] p-8 md:p-16 lg:p-24 relative overflow-hidden text-acumen-secondary shadow-lg shadow-acumen-primary/10">
-        
+
         {/* FIX 2: Abstract Background Blurs using branded colors for a subtle effect */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-acumen-primary/30 mix-blend-lighten rounded-full blur-3xl opacity-30" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-palette-lavender-muted/50 mix-blend-lighten rounded-full blur-3xl opacity-50" />
@@ -26,8 +26,8 @@ export const About = () => (
             </h2>
 
             <p className="text-lg text-acumen-light leading-relaxed mb-8 max-w-md">
-              We believe in growth fueled by clarity and purpose, not just clicks. We craft
-              intentional strategies.
+              Growth isn’t accidental  it’s intentional.
+              We don’t chase clicks or trends. Every strategy we craft is fueled by clarity, purpose, and measurable impact.
             </p>
 
             <div className="grid grid-cols-2 gap-6">
@@ -39,7 +39,7 @@ export const About = () => (
                 >
                   <h4 className="font-serif text-xl font-bold mb-2 text-acumen-secondary">{label}</h4>
                   <p className="text-sm text-acumen-light">
-                    {label === "Vision" ? "Fusing insight with execution." : "Forging the path to dominance."}
+                    {label === "Vision" ? "Insight. Execution. Impact." : "Elevate. Disrupt. Win."}
                   </p>
                 </div>
               ))}
@@ -52,13 +52,12 @@ export const About = () => (
                         bg-gradient-to-br from-palette-lavender-muted/50 to-acumen-primary/10 text-acumen-secondary border-2 border-purple-Heart backdrop-blur-md border-r-2 border-acumen-primary">
               <Quote className="w-12 h-12 text-acumen-primary/40 mb-4" />
               <blockquote className="font-serif text-2xl md:text-3xl leading-snug">
-                "True success isn't about chasing the next trend—it's about building a foundation
-                that lasts."
+                "True success isn’t about chasing the next trend  it’s about building a foundation that lasts."
               </blockquote>
 
               <div className="flex items-center gap-4 mt-8">
                 <div className="w-12 h-12 rounded-full bg-acumen-primary/10 flex items-center justify-center">
-                  <Heart className="w-6 h-6 text-acumen-primary" />
+                  <Heart className="w-6 h-6 text-acumen-secondary" />
                 </div>
                 <div>
                   <div className="font-bold text-acumen-secondary">Syedah Fatma</div>
