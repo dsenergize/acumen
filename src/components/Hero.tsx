@@ -8,7 +8,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex items-center pt-28 pb-20"
+      className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden"
     >
       {/* Abstract Background - Using primary brand colors for subtle gradient blur */}
       <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-[hsl(277,72%,26%)]/20 to-blue-600/20 rounded-full blur-3xl" />
