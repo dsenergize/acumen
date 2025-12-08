@@ -2,7 +2,7 @@ import { Lightbulb, Target, Zap, Heart, Quote } from "lucide-react";
 
 export const About = () => (
   // Outer section remains white
-  <section id="about" className="py-24 bg-white">
+  <section id="about" className="py-16 bg-white">
     <div className="container mx-auto px-6">
       {/* Main container background: Retain light tint, add soft shadow for depth */}
       <div className="bg-gradient-to-br from-acumen-primary/20 to-palette-blue-slate/30 rounded-[3rem] p-8 md:p-16 lg:p-24 relative overflow-hidden text-acumen-secondary shadow-lg shadow-acumen-primary/10">

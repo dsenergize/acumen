@@ -3,27 +3,28 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import Link from "next/link"; // <--- 1. Import Link
 
 export const CaseStudies = () => {
     const cases = [
         {
             client: "DSenergize",
             title: "Sustainable Brand Launch",
-            tags: ["Branding","Launch"],
+            tags: ["Branding", "Launch"],
             image: "/assets/pic1.jpg",
             stat: "Record Q1 Sales",
         },
         {
             client: "ReqX",
             title: "Transforming Tech Talent Acquisition",
-            tags: ["UX/UI","Development"],
+            tags: ["UX/UI", "Development"],
             image: "/assets/pic9.jpg",
             stat: "+45% Conversion",
         },
         {
             client: "ShapeIQ",
             title: "Optimizing Digital Footprint for Space",
-            tags: ["Strategy","SEO"],
+            tags: ["Strategy", "SEO"],
             image: "/assets/pic7.jpg",
             stat: "2x Traffic",
         },
@@ -33,25 +34,28 @@ export const CaseStudies = () => {
     const isImagePath = (path: string) => path.includes('/') || path.includes('.');
 
     return (
-        <section id="case-studies" className="py-24 md:py-32 bg-[#FDFCFE]">
+        <section id="case-studies" className="py-16 md:py-24 bg-[#FDFCFE]">
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-end mb-16">
                     <div>
                         <span className="text-lg font-bold text-acumen-primary uppercase tracking-widest">
-                            Our Work 
+                            Our Work
                             <span className="font-serif"> & </span>
                         </span>
-                        {/* H2 text uses the darkest brand shade (acumen-secondary) */}
                         <h2 className="font-serif text-4xl md:text-5xl font-bold text-acumen-secondary">
                             Hall of Impact
                         </h2>
                     </div>
-                    <Button
-                        variant="secondary"
-                        className="hidden md:flex border-acumen-primary hover:border-acumen-primary"
-                    >
-                        View All Work
-                    </Button>
+                    
+                    {/* 2. Desktop Button Wrapped in Link */}
+                    <Link href="/allcasestudies" className="hidden md:block">
+                        <Button
+                            variant="secondary"
+                            className="border-acumen-primary hover:border-acumen-primary"
+                        >
+                            View All Work
+                        </Button>
+                    </Link>
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
@@ -63,7 +67,6 @@ export const CaseStudies = () => {
                                     !isImagePath(item.image) && item.image
                                 )}
                             >
-                                {/* NEW: Conditional Image Rendering */}
                                 {isImagePath(item.image) && (
                                     <img
                                         src={item.image}
@@ -76,17 +79,13 @@ export const CaseStudies = () => {
                                         }}
                                     />
                                 )}
-                                {/* Overlay for hover effect */}
                                 <div className="absolute inset-0 bg-acumen-primary/10 transition-colors duration-300" />
                                 <div className="absolute inset-0 bg-acumen-secondary/0 group-hover:bg-acumen-secondary/10 transition-colors duration-300" />
 
-                                {/* Stat/CTA content */}
                                 <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    {/* Stat text uses acumen-secondary for dark contrast */}
                                     <span className="bg-white/90 backdrop-blur text-acumen-secondary px-4 py-2 rounded-full text-sm font-semibold">
                                         {item.stat}
                                     </span>
-                                    {/* Icon container uses dark text for contrast */}
                                     <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
                                         <ArrowRight className="w-5 h-5 text-acumen-secondary" />
                                     </div>
@@ -98,7 +97,6 @@ export const CaseStudies = () => {
                                     {item.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            // Tags use the lighter brand shade (acumen-light)
                                             className="text-xs font-semibold text-acumen-light uppercase tracking-wider"
                                         >
                                             {tag}
@@ -106,11 +104,9 @@ export const CaseStudies = () => {
                                     ))}
                                 </div>
 
-                                {/* Title text uses the darkest brand shade (acumen-secondary) */}
                                 <h3 className="font-serif text-2xl font-bold text-acumen-secondary group-hover:text-acumen-primary transition-colors">
                                     {item.title}
                                 </h3>
-                                {/* Client name uses the lighter brand shade (acumen-light) */}
                                 <p className="text-acumen-light">{item.client}</p>
                             </div>
                         </div>
@@ -118,9 +114,12 @@ export const CaseStudies = () => {
                 </div>
 
                 <div className="mt-12 text-center md:hidden">
-                    <Button variant="outline" className="w-full">
-                        View All Work
-                    </Button>
+                     {/* 3. Mobile Button Wrapped in Link (Replaced onClick) */}
+                    <Link href="/allcasestudies" className="w-full block">
+                        <Button variant="outline" className="w-full">
+                            View All Work
+                        </Button>
+                    </Link>
                 </div>
             </div>
         </section>

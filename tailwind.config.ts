@@ -3,7 +3,6 @@ import tailwindcssAnimate from "tailwindcss-animate";
 
 const config: Config = {
   content: [
-    // Ensuring 'src' is included for comprehensive file scanning
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,28 +15,26 @@ const config: Config = {
     },
     extend: {
       colors: {
-        // --- EXISTING ACUMEN BRAND COLORS (PURPLES) ---
         acumen: {
-          primary: "hsl(277,72%,26%)", // Deep Purple
-          secondary: "hsl(277,72%,22%)", // Darker Purple (Hover)
-          light: "hsl(277,72%,30%)", // Slightly Lighter Purple
+          primary: "hsl(277,72%,26%)", 
+          secondary: "hsl(277,72%,22%)", 
+          light: "hsl(277,72%,30%)", 
         },
-        // --- NEW ACCENT COLORS ADDED ---
         palette: {
           'Purple Heart': "#4F1271",
           'Pastel Lavender': "#BFACC8",
           'Royal Purple': "#783F8E",
         }
-        // Note: The slate colors used throughout your components (e.g., text-slate-900)
-        // are standard Tailwind colors and do not need to be redefined here.
       },
       fontFamily: {
         sans: ["var(--font-sans)", "sans-serif"],
         serif: ["var(--font-serif)", "serif"],
       },
+      // --- ADD THIS SECTION ---
       animation: {
         "fade-in": "fade-in 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards",
         "pulse-slow": "pulse-slow 8s ease-in-out infinite",
+        "scroll": "scroll 30s linear infinite", // Speed of the scroll
       },
       keyframes: {
         "fade-in": {
@@ -48,7 +45,13 @@ const config: Config = {
           "0%, 100%": { opacity: "0.6", transform: "scale(1)" },
           "50%": { opacity: "0.4", transform: "scale(1.05)" },
         },
+        // The infinite scroll logic
+        "scroll": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" }, // Moves half the width (the width of the original set)
+        },
       },
+      // ------------------------
     },
   },
   plugins: [tailwindcssAnimate], 

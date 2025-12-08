@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button';
 
 export const CTA = () => (
   // FIX 1: Section background changed from hex to subtle brand tint
-  <section id="contact" className="py-24 bg-white relative">
+  <section id="contact" className="py-20 bg-white relative">
     <div className="container mx-auto px-6">
       <div className="max-w-4xl mx-auto text-center">
         {/* FIX 2: Headline text color updated to darkest brand shade */}
@@ -14,7 +14,7 @@ export const CTA = () => (
 
         {/* FIX 3: Body text color updated to neutral shade */}
         <p className="text-xl text-acumen-light mb-12 max-w-2xl mx-auto">
-         Big goals need bold moves. Let'  s build a plan that makes them happen.
+         Big goals need bold moves. Let's build a plan that makes them happen.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

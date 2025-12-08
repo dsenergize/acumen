@@ -1,4 +1,4 @@
-import TermsOfService from "@/Pages/TermsOfService";
+import TermsOfService from "@/pages/TermsOfService";
 
 export default function Terms() {
 

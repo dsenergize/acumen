@@ -8,7 +8,7 @@ export const StatsAndPartners = () => {
   return (
     // FIX 1: Section background changed to a light, subtle brand tint (bg-acumen-primary/5)
     // FIX 2: Text color changed from white to the darkest brand color (text-acumen-secondary)
-    <section className="py-20 bg-acumen text-acumen-secondary relative overflow-hidden">
+    <section className="py-8 bg-acumen text-acumen-secondary relative overflow-hidden">
       {/* Background Overlay is removed as it was intended for a dark background */}
       {/* <div className="absolute inset-0 bg-[hsl(277,72%,26%)]/20 mix-blend-overlay" /> */}
 

@@ -8,7 +8,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[100dvh] flex items-center pt-28 pb-20 overflow-hidden"
+      className="relative min-h-[100dvh] flex items-center pt-20 pb-15 overflow-hidden"
     >
       {/* Abstract Background - Using primary brand colors for subtle gradient blur */}
       <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-gradient-to-br from-[hsl(277,72%,26%)]/20 to-blue-600/20 rounded-full blur-3xl" />
@@ -74,7 +74,7 @@ export const Hero = () => {
               Trusted by visionary brands
             </p>
             <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale">
-              {["Acme Corp", "GlobalTech", "Nebula", "Velocity", "FoxRun", "DSenergize"].map(
+              {["DSEnergize", "ShapeIQ", "ReqX", "SLV", "KRISHIGRO"].map(
                 (logo) => (
                   <span
                     key={logo}

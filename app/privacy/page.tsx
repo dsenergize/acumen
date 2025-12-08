@@ -1,4 +1,4 @@
-import PrivacyPolicy from "@/Pages/PrivacyPolicy";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 
 export default function Policy() {
     

@@ -17,7 +17,7 @@ export const Footer = () => {
 
   return (
     // FIX: Updated border-slate-100 to border-acumen-primary/10
-    <footer className="bg-white border-t border-acumen-primary/10 pt-20 pb-10">
+    <footer className="bg-white border-t border-acumen-primary/10 pt-20 pb-5">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
 

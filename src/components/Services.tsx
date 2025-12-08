@@ -16,43 +16,43 @@ export const Services = () => {
       icon: Globe,
       title: "Web Development",
       description:
-        "Built Different. Built Brilliant.",
+        "Scalable, high-performance web platforms and e-commerce solutions.",
     },
     {
       icon: Palette,
       title: "UI/UX Design",
       description:
-        "Looks Good. Feels Better.",
+        "Intuitive interfaces and seamless user experiences that drive engagement.",
     },
     {
       icon: Megaphone,
       title: "Marketing Strategy",
       description:
-        "Hype Meets Strategy. Ads That Actually Perform.",
+        "Data-backed campaigns and funnel optimization for measurable growth.",
     },
     {
       icon: Video,
       title: "Video Production",
       description:
-        "Made to Stop the Scroll.",
+        "Cinematic storytelling that captures attention and builds trust.",
     },
     {
       icon: Smartphone,
       title: "Mobile Apps",
       description:
-        "Tap. Swipe. Love.",
+        "Native and cross-platform app development for iOS and Android.",
     },
     {
       icon: Search,
       title: "SEO & Analytics",
       description:
-        "Found. Clicked. Loved.",
+        "Technical SEO and deep analytical insights for top organic ranking.",
     },
   ];
 
   return (
     // Parent section background remains white
-    <section id="services" className="py-24 md:py-32 bg-white relative">
+    <section id="services" className="py-16 md:py-24 bg-white relative">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div className="max-w-2xl">
