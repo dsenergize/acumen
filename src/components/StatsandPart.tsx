@@ -1,8 +1,8 @@
 export const StatsAndPartners = () => {
   const stats = [
-    { value: "210+", label: "Partners" },
+    { value: "10+", label: "Partners" },
     { value: "33%", label: "Avg ROI Increase" },
-    { value: "9+", label: "Years Experience" },
+    { value: "3+", label: "Years Experience" },
   ];
 
   return (
