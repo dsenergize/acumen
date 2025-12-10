@@ -12,6 +12,7 @@ const logos = [
   { name: "UMPL", src: "/assets/UMPL.jpg" },
   { name: "SLV", src: "/assets/SLV.jpeg" },
   { name: "NFI", src: "/assets/NFI.png" },
+  { name: "ShapeIQ", src: "/assets/ShapeIQ.jpg" },
 ];
 
 export const Hero = () => {
