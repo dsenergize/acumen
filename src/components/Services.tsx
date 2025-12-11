@@ -13,7 +13,6 @@ import {
 import { motion } from "framer-motion";
 
 // --- Utility: Custom Smooth Scroll Function ---
-// Tuned for a "buttery" feel rather than a mechanical slide
 const scrollToTarget = (
   container: HTMLElement | Window,
   targetPos: number,
@@ -33,7 +32,7 @@ const scrollToTarget = (
     if (startTime === null) startTime = currentTime;
     const timeElapsed = currentTime - startTime;
 
-    // Easing: easeOutQuart (Smoother deceleration than Cubic)
+    // Easing: easeOutQuart
     const ease = (t: number) => 1 - Math.pow(1 - t, 4);
     
     const run = ease(Math.min(timeElapsed / duration, 1));
@@ -55,7 +54,8 @@ export const Services = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
   
-  // --- Track Mobile State ---
+  // Performance lock
+  const isAutoScrolling = useRef(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -67,70 +67,58 @@ export const Services = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // --- Optimization: Memoize Data ---
   const services = useMemo(() => [
     {
       icon: Globe,
       title: "Web Development",
-      description:
-        "Scalable, high-performance web platforms and e-commerce solutions.",
+      description: "Scalable, high-performance web platforms and e-commerce solutions.",
     },
     {
       icon: Palette,
       title: "UI/UX Design",
-      description:
-        "Intuitive interfaces and seamless user experiences that drive engagement.",
+      description: "Intuitive interfaces and seamless user experiences that drive engagement.",
     },
     {
       icon: Megaphone,
       title: "Marketing Strategy",
-      description:
-        "Data-backed campaigns and funnel optimization for measurable growth.",
+      description: "Data-backed campaigns and funnel optimization for measurable growth.",
     },
     {
       icon: Video,
       title: "Video Production",
-      description:
-        "Cinematic storytelling that captures attention and builds trust.",
+      description: "Cinematic storytelling that captures attention and builds trust.",
     },
     {
       icon: Smartphone,
       title: "Mobile Apps",
-      description:
-        "Native and cross-platform app development for iOS and Android.",
+      description: "Native and cross-platform app development for iOS and Android.",
     },
     {
       icon: Search,
       title: "SEO & Analytics",
-      description:
-        "Technical SEO and deep analytical insights for top organic ranking.",
+      description: "Technical SEO and deep analytical insights for top organic ranking.",
     },
   ], []);
 
-  // Scroll Detection to update activeIndex
+  // Scroll Detection
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isAutoScrolling.current) return;
+
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = cardsRef.current.findIndex(
-              (card) => card === entry.target
-            );
-            // --- Optimization: Only update state if index actually changed ---
-            // This prevents React from re-rendering during the scroll animation,
-            // which causes the "lag" or "stutter".
+            const index = cardsRef.current.findIndex((card) => card === entry.target);
             if (index !== -1) {
               setActiveIndex((prev) => (prev !== index ? index : prev));
             }
           }
         });
       },
-      {
-        threshold: 0.6,
-      }
+      { threshold: 0.6 }
     );
     cardsRef.current.forEach((card) => {
       if (card) observer.observe(card);
@@ -144,28 +132,34 @@ export const Services = () => {
     const container = containerRef.current;
     if (!card || !container) return;
 
+    isAutoScrolling.current = true;
+    setActiveIndex(idx);
+
     if (isMobile) {
-      // Mobile Vertical Scroll Logic
       const rect = card.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const stickyOffset = 80 + idx * 10;
       const targetY = rect.top + scrollTop - stickyOffset - 20; 
       scrollToTarget(window, targetY, "vertical", 800);
     } else {
-      // Desktop Horizontal Scroll Logic
       const containerWidth = container.clientWidth;
       const cardWidth = card.clientWidth;
       const cardLeft = card.offsetLeft;
+      // Center the card
       const targetX = cardLeft - containerWidth / 2 + cardWidth / 2;
       scrollToTarget(container, targetX, "horizontal", 900);
     }
+
+    setTimeout(() => {
+      isAutoScrolling.current = false;
+    }, 1000);
   };
 
   return (
-    <section id="services" className="py-4 md:py-8 bg-white relative z-0">
+    <section id="services" className="bg-white relative z-0 overflow-visible">
       <div className="container mx-auto px-4 md:px-6">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between md:mb-6 gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between md:mb-6 gap-4 md:gap-8 pt-8">
           <div className="max-w-2xl">
             <span className="text-sm md:text-lg font-bold text-acumen-primary uppercase tracking-widest">
               Our Expertise <span className="font-serif"> & </span>
@@ -187,12 +181,14 @@ export const Services = () => {
               flex-col md:flex-row 
               md:overflow-x-auto md:snap-x md:snap-mandatory 
               gap-6 
-              py-12 
+              py-20 px-6 md:px-12
               no-scrollbar
+              relative
             `}
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+              perspective: "1000px" 
             }}
           >
             {services.map((service, idx) => (
@@ -203,8 +199,6 @@ export const Services = () => {
                 }}
                 initial={{ opacity: 0, y: 50, x: 20 }}
                 whileInView={{ opacity: 1, y: 0, x: 0 }}
-                // --- Optimization: Lighter Transition ---
-                // Switched from 'spring' to 'easeOut'. Springs are heavy on lists.
                 transition={{
                   duration: 0.6,
                   delay: idx * 0.05,
@@ -212,11 +206,15 @@ export const Services = () => {
                 }}
                 viewport={{ once: true, margin: "-50px" }}
                 
-                // Stacking Logic (Mobile) vs Horizontal Layout (Desktop)
                 style={{
+                  // Mobile Sticky Stacking
                   top: `${80 + idx * 10}px`, 
+                  
+                  // Desktop Sticky Stacking
                   left: isMobile ? 0 : `${idx * 40}px`,
-                  // Optimization: Tell browser to prepare for animation
+                  
+                  zIndex: idx + 1,
+                  
                   willChange: "transform", 
                 }}
 
@@ -241,28 +239,23 @@ export const Services = () => {
                   hover:border-acumen-primary/50
                   transition-colors duration-300
                   
-                  /* SHADOW & GPU Acceleration */
-                  shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)]
-                  transform-gpu 
+                  /* SHADOW - Enhanced for pop-out effect */
+                  shadow-[0_10px_30px_-10px_rgba(0,0,0,0.08)]
+                  hover:shadow-[0_20px_50px_-10px_rgba(88,28,135,0.15)]
                   
                   cursor-pointer
                   overflow-hidden
-                  
-                  z-0
                 `}
                 whileHover={{
-                  y: -8, // Reduced movement slightly for performance
-                  scale: 1.01, // Subtle scale
-                  zIndex: 20,
-                  boxShadow: "0 20px 40px -10px rgba(88,28,135,0.1)",
+                  y: -12, // Move up visually "popping out"
+                  scale: 1.02, // Slight growth
+                  zIndex: 100, // Ensure it jumps to absolute top when interacted with
                   transition: { duration: 0.3, ease: "easeOut" }
                 }}
               >
-                {/* DECORATIVE BLOB - Optimized */}
+                {/* DECORATIVE BLOB */}
                 <motion.div
                   className="absolute -right-12 -top-12 w-40 h-40 bg-acumen-primary/5 rounded-full blur-3xl"
-                  // Removed complex continuous animation which causes high CPU usage
-                  // Replaced with subtle opacity pulse which is cheaper
                   animate={{
                     opacity: [0.5, 0.8, 0.5],
                   }}
@@ -360,7 +353,6 @@ export const Services = () => {
                   md:h-2 
                   md:${activeIndex === idx ? "w-8" : "w-2"}
                 `}
-                  // Using Layout transition with a tween is smoother than spring for small UI elements
                   layout
                   transition={{ type: "tween", ease: "circOut", duration: 0.3 }}
                 />
