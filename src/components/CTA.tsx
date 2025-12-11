@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from '@/components/ui/Button';
+import Link from 'next/link';
 
 export const CTA = () => (
   // FIX 1: Section background changed from hex to subtle brand tint
@@ -18,6 +19,7 @@ export const CTA = () => (
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link href="/contactus" className="w-full sm:w-auto">
           <Button
             variant="secondary"
             size="xl"
@@ -31,7 +33,7 @@ export const CTA = () => (
           >
             Schedule a Consultation
           </Button>
-
+          </Link>
           <Button
             variant="outline"
             size="xl"
