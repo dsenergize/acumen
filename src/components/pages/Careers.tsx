@@ -71,7 +71,7 @@ export default function Careers() {
   return (
     <main className="min-h-screen bg-[#FDFCFE] font-sans selection:bg-acumen-primary selection:text-white flex flex-col overflow-x-hidden">
       
-      {/* INJECTED STYLES FOR PREVIEW (You can remove this block in your real project if tailwind config is set) */}
+      {/* INJECTED STYLES FOR PREVIEW */}
       <style>{`
         :root {
             --acumen-primary: 277 72% 26%;
@@ -96,36 +96,17 @@ export default function Careers() {
         .animate-fade-up {
             animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
         }
-        
-        @keyframes slide-up-fade {
-            0% { opacity: 0; transform: translateY(40px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide-up-fade {
-            animation: slide-up-fade 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
       `}</style>
 
       <Navbar />
 
       {/* --- HERO SECTION --- */}
       <section className="relative lg:pt-32 lg:pb-16 md:pb-16 pb-12 overflow-hidden">
-        {/* Background Gradients & Grid (Enord Style) */}
+        {/* Background Gradients (Grid lines removed) */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
             <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-gradient-to-br from-[hsl(277,72%,26%)]/10 to-blue-600/10 rounded-full blur-3xl" />
             <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-gradient-to-tr from-blue-600/10 to-[hsl(277,72%,26%)]/10 rounded-full blur-3xl" />
             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/nc')] opacity-5" />
-            
-            {/* Vertical Staggered Grid */}
-            <div className="absolute inset-0 grid grid-cols-6 md:grid-cols-12 gap-0 h-full w-full max-w-7xl mx-auto px-6">
-                {[...Array(12)].map((_, i) => (
-                    <div 
-                        key={i}
-                        className={`relative h-full border-r border-acumen-primary/5 hidden ${i < 6 ? 'block' : 'md:block'} opacity-0 animate-slide-up-fade`}
-                        style={{ animationDelay: `${i * 0.1}s`, animationFillMode: 'forwards' }}
-                    />
-                ))}
-            </div>
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center">
@@ -233,7 +214,7 @@ export default function Careers() {
           </div>
 
           {/* --- GENERAL CTA --- */}
-          <div className="md:p-12 rounded-3xl bg-white text-acumen-secondary text-center relative overflow-hidden">
+          <div className="md:p-12 rounded-3xl bg-white text-acumen-secondary text-center relative overflow-hidden mt-12">
             {/* Decorative background circle */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/6 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
 

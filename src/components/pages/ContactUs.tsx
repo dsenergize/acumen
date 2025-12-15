@@ -149,7 +149,7 @@ const ContactUs = () => {
                                         </div>
                                         <div>
                                             <h3 className="font-bold text-acumen-secondary mb-1">Visit Us</h3>
-                                            <p className="text-acumen-light">CIE, 4C(Gate: 4), Jamia Milia Islamia<br />New Delhi, India 110025</p>
+                                            <p className="text-acumen-light">CIE, 4C(Gate: 4), Jamia Milia Islamia, New Delhi, India 110025</p>
                                         </div>
                                     </div>
                                 </div>

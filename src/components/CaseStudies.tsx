@@ -8,26 +8,32 @@ import Link from "next/link"; // <--- 1. Import Link
 export const CaseStudies = () => {
     const cases = [
         {
+            id: 1,
             client: "DSenergize",
-            title: "Sustainable Brand Launch",
-            tags: ["Branding", "Launch"],
+            title: "Solar IoT Analytics Platform",
+            tags: ["App Development"],
             image: "/assets/pic1.jpg",
-            stat: "Record Q1 Sales",
+            stat: "Max Energy Gen",
+            desc: "Development of a cloud-based energy management dashboard allowing real-time remote monitoring, predictive maintenance, and data logging for solar assets."
         },
         {
+            id: 2,
             client: "ReqX",
-            title: "Transforming Tech Talent Acquisition",
-            tags: ["UX/UI", "Development"],
+            title: "Global IT Talent Portal",
+            tags: ["Web Development"],
             image: "/assets/pic9.jpg",
-            stat: "+45% Conversion",
+            stat: "Top-Tier Vetting",
+            desc: "Designing a corporate digital interface to connect businesses with executive IT talent and specialized consulting services for digital transformation."
         },
         {
+            id: 3,
             client: "ShapeIQ",
-            title: "Optimizing Digital Footprint for Space",
-            tags: ["Strategy", "SEO"],
+            title: "Sustainable MedTech Launch",
+            tags: ["Strategy"],
             image: "/assets/pic7.jpg",
-            stat: "2x Traffic",
-        },
+            stat: "90% Less Waste",
+            desc: "Brand positioning and market entry strategy for 'EcoCast,' a revolutionary recycled 3D-printed orthopedic product driving the circular economy."
+        }
     ];
 
     // Helper function to check if the string looks like a URL/Path
@@ -47,7 +53,7 @@ export const CaseStudies = () => {
                         </h2>
                     </div>
                     
-                    {/* 2. Desktop Button Wrapped in Link */}
+                    {/* Desktop Button Wrapped in Link */}
                     <Link href="/allcasestudies" className="hidden md:block">
                         <Button
                             variant="secondary"
@@ -58,71 +64,72 @@ export const CaseStudies = () => {
                     </Link>
                 </div>
 
-                {/* Mobile: sticky "View All Work" button pinned to top of this section while visible */}
-                <div className="md:hidden sticky top-20 z-40 mb-6">
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {cases.map((item) => (
+                        // WRAPPED IN LINK TO DYNAMIC PAGE
+                        <Link href={`/portfolio/${item.id}`} key={item.id} className="group cursor-pointer block">
+                            <div>
+                                <div
+                                    className={cn(
+                                        "rounded-[1rem] aspect-[4/3] mb-6 overflow-hidden relative bg-acumen-primary/5 border-2 hover:border-acumen-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-acumen-primary/10 hover:scale-[1.01]",
+                                        !isImagePath(item.image) && item.image
+                                    )}
+                                >
+                                    {isImagePath(item.image) && (
+                                        <img
+                                            src={item.image}
+                                            alt={`Case study image for ${item.client}`}
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                                            onError={(e) => {
+                                                const target = e.target as HTMLImageElement;
+                                                target.onerror = null;
+                                                target.src = `https://placehold.co/600x400/acumen-primary/ffffff?text=Image+Missing`;
+                                            }}
+                                        />
+                                    )}
+                                    <div className="absolute inset-0 bg-acumen-primary/10 transition-colors duration-300" />
+                                    <div className="absolute inset-0 bg-acumen-secondary/0 group-hover:bg-acumen-secondary/10 transition-colors duration-300" />
+
+                                    <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <span className="bg-white/90 backdrop-blur text-acumen-secondary px-4 py-2 rounded-full text-sm font-semibold">
+                                            {item.stat}
+                                        </span>
+                                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                                            <ArrowRight className="w-5 h-5 text-acumen-secondary" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div className="flex gap-2 mb-3">
+                                        {item.tags.map((tag) => (
+                                            <span
+                                                key={tag}
+                                                className="text-xs font-semibold text-acumen-light uppercase tracking-wider"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+
+                                    <h3 className="font-serif text-2xl font-bold text-acumen-secondary group-hover:text-acumen-primary transition-colors">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-acumen-light">{item.client}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))}
+                </div>
+
+                {/* Mobile View Button */}
+                <div className="mt-12 md:hidden">
                     <Link href="/allcasestudies" className="w-full block">
-                        <Button variant="outline" className="w-full">
+                        <Button variant="outline" className="w-full bg-acumen-primary text-white hover:bg-acumen-secondary">
                             View All Work
                         </Button>
                     </Link>
                 </div>
-
-                <div className="grid lg:grid-cols-3 gap-8">
-                    {cases.map((item, idx) => (
-                        <div key={idx} className="group cursor-pointer">
-                            <div
-                                className={cn(
-                                    "rounded-[1rem] aspect-[4/3] mb-6 overflow-hidden relative bg-acumen-primary/5 border-2 hover:border-acumen-primary/30 transition-all duration-300 hover:shadow-2xl hover:shadow-acumen-primary/10 hover:scale-[1.01]",
-                                    !isImagePath(item.image) && item.image
-                                )}
-                            >
-                                {isImagePath(item.image) && (
-                                    <img
-                                        src={item.image}
-                                        alt={`Case study image for ${item.client}`}
-                                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                                        onError={(e) => {
-                                            const target = e.target as HTMLImageElement;
-                                            target.onerror = null;
-                                            target.src = `https://placehold.co/600x400/acumen-primary/ffffff?text=Image+Missing`;
-                                        }}
-                                    />
-                                )}
-                                <div className="absolute inset-0 bg-acumen-primary/10 transition-colors duration-300" />
-                                <div className="absolute inset-0 bg-acumen-secondary/0 group-hover:bg-acumen-secondary/10 transition-colors duration-300" />
-
-                                <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <span className="bg-white/90 backdrop-blur text-acumen-secondary px-4 py-2 rounded-full text-sm font-semibold">
-                                        {item.stat}
-                                    </span>
-                                    <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                                        <ArrowRight className="w-5 h-5 text-acumen-secondary" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <div className="flex gap-2 mb-3">
-                                    {item.tags.map((tag) => (
-                                        <span
-                                            key={tag}
-                                            className="text-xs font-semibold text-acumen-light uppercase tracking-wider"
-                                        >
-                                            {tag}
-                                        </span>
-                                    ))}
-                                </div>
-
-                                <h3 className="font-serif text-2xl font-bold text-acumen-secondary group-hover:text-acumen-primary transition-colors">
-                                    {item.title}
-                                </h3>
-                                <p className="text-acumen-light">{item.client}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* mobile button moved to section top (sticky) */}
             </div>
         </section>
     );
