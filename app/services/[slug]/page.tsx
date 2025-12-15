@@ -15,13 +15,16 @@ export async function generateStaticParams() {
 }
 
 interface ServicePageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function ServiceDetail({ params }: ServicePageProps) {
-  const service = SERVICES_DATA.find((s) => s.slug === params.slug);
+export default async function ServiceDetail({ params }: ServicePageProps) {
+
+  const {slug} = await params;
+
+  const service = SERVICES_DATA.find((s) => s.slug === slug);
 
   if (!service) {
     notFound();
